@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=boska@400,700&display=swap">
+		%sveltekit.head%
+		<script>
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark')
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		</script>
+	</head>
+	<body>
+		<div>%sveltekit.body%</div>
+	</body>
+</html>
