@@ -2,4 +2,4 @@
 	import Meta from '$lib/components/Meta.svelte'
 </script>
 
-<Meta title="Tabs" description="Sveltekit Cases" />
+<Meta title="Tabbed Routes" description="Sveltekit Cases" />

@@ -1,10 +1,6 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition'
 	import { page } from '$app/stores'
 	import Card from '$lib/components/Card.svelte'
-	import type { LayoutData } from './$types'
-
-	export let data: LayoutData
 
 	interface Tab {
 		name: string
@@ -12,8 +8,8 @@
 	}
 
 	const tabs: Tab[] = [
-		{ name: 'Form', url: 'form' },
-		{ name: 'Table', url: 'table' }
+		{ name: 'One', url: 'one' },
+		{ name: 'Two', url: 'two' }
 	]
 
 	$: getActiveClass = (tab: Tab) => {
@@ -26,7 +22,7 @@
 		<div class="flex justify-around">
 			{#each tabs as tab}
 				<a
-					href={`/tabs/${tab.url}`}
+					href={`/tabbed-routes/${tab.url}`}
 					class="flex-1 rounded text-center font-bold text-black dark:text-white p-2 {getActiveClass(
 						tab
 					)}"
@@ -38,10 +34,6 @@
 	</Card>
 
 	<div class="mt-8">
-		{#key data.url}
-			<div in:fade={{ delay: 250 }} out:fade={{ duration: 250 }}>
-				<slot />
-			</div>
-		{/key}
+		<slot />
 	</div>
 </div>
