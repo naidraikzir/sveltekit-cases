@@ -24,7 +24,7 @@
 			absolute md:static
 			-translate-x-1/2 md:translate-x-0
 			mt-2 md:m-0 p-4 md:p-0
-		bg-white/50 dark:bg-white/5 md:dark:bg-transparent
+		bg-white/50 dark:bg-white/5 md:bg-transparent md:dark:bg-transparent
 			border border-white/10 md:border-0
 		dark:text-white
 			opacity-0 md:opacity-100 group-hover:opacity-100
