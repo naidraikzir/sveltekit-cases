@@ -2,6 +2,11 @@
 	import { page } from '$app/stores'
 	import '$lib/app.css'
 	import Navbar from '$lib/components/Navbar.svelte'
+	import routes from '$lib/store/routes'
+	import type { PageData } from './$types'
+
+	export let data: PageData
+	$routes = data.routes
 
 	$: isHome = $page.route.id === '/'
 </script>

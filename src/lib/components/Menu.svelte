@@ -1,26 +1,29 @@
 <script lang="ts">
 	import { page } from '$app/stores'
+	import routes from '$lib/store/routes'
 
 	interface MenuItem {
 		url: string
 		label: string
 	}
 
-	const menu: MenuItem[] = [
-		{ url: '/tabbed-routes', label: 'Tabbed Routes' },
-		{ url: '/form', label: 'Form' },
-		{ url: '/table', label: 'Table' }
-	]
+	$: menu = $routes.map((item) => ({
+		url: `/${item}`,
+		label: item
+			.split('-')
+			.map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+			.join(' ')
+	}))
 
-	$: getActiveClass = (menu: MenuItem) =>
-		$page.route.id?.startsWith(menu.url) && 'border-b-2 border-b-pink-700'
+	$: getActiveClass = (item: MenuItem) =>
+		$page.route.id?.startsWith(item.url) && 'border-b-2 border-b-pink-700'
 </script>
 
 <div class="relative group">
 	<div class="md:hidden text-3xl -mt-1">⚀</div>
 	<div
 		class="
-			left-1/2 top-full min-w-max z-10 rounded-lg backdrop-blur
+			left-1/2 top-full min-w-max z-10 rounded-lg backdrop-blur transition duration-300
 			absolute md:static
 			-translate-x-1/2 md:translate-x-0
 			mt-2 md:m-0 p-4 md:p-0
@@ -31,12 +34,9 @@
 			invisible md:visible group-hover:visible
 		"
 	>
-		{#each menu as menuItem}
-			<a
-				href={menuItem.url}
-				class={`text-lg mx-2 block my-2 md:inline md:p-0 ${getActiveClass(menuItem)}`}
-			>
-				{menuItem.label}
+		{#each menu as item}
+			<a href={item.url} class={`text-lg mx-2 block my-2 md:inline md:p-0 ${getActiveClass(item)}`}>
+				{item.label}
 			</a>
 		{/each}
 	</div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition'
 	import Button from '$lib/components/Button.svelte'
 	import Card from '$lib/components/Card.svelte'
 	import Input from '$lib/components/Input.svelte'
@@ -52,7 +53,10 @@
 				</div>
 
 				{#each form.items as item, index}
-					<div class="flex items-end justify-between mb-2 gap-4">
+					<div
+						class="flex items-end justify-between mb-2 gap-4"
+						transition:slide|local={{ duration: 200 }}
+					>
 						<Input type="text" id={`name-${index}`} label="Name" bind:value={item.name} />
 						<Input
 							type="number"

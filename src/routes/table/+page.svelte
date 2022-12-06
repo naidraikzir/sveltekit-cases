@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition'
 	import Card from '$lib/components/Card.svelte'
 	import Meta from '$lib/components/Meta.svelte'
 	import type { PageData } from './$types'
@@ -8,7 +9,7 @@
 	let expanded = new Set()
 
 	$: onAllClick = () => {
-		if (data.users.length === [...expanded.values()].length) expanded.clear()
+		if (data.users.length === expanded.size) expanded.clear()
 		else Array.from({ length: data.users.length }, (_, i) => i).forEach(expanded.add, expanded)
 		expanded = expanded
 	}
@@ -51,9 +52,11 @@
 
 						{#if expanded.has(index)}
 							<tr class="bg-black/5 dark:bg-black/25">
-								<td class="p-2" />
-								<td class="p-2" colspan="4">
-									<Todos todos={user.todos} />
+								<td />
+								<td colspan="4">
+									<div class="p-2" transition:slide|local>
+										<Todos todos={user.todos} />
+									</div>
 								</td>
 							</tr>
 						{/if}
