@@ -2,6 +2,7 @@
 	import { page } from '$app/stores'
 	import '$lib/app.css'
 	import Navbar from '$lib/components/Navbar.svelte'
+	import ProgressBar from '$lib/components/ProgressBar.svelte'
 	import routes from '$lib/store/routes'
 	import type { PageData } from './$types'
 
@@ -10,6 +11,8 @@
 
 	$: isHome = $page.route.id === '/'
 </script>
+
+<ProgressBar />
 
 <div class="min-h-screen bg-black/5 dark:bg-indigo-900 dark:text-white">
 	<div class="min-h-screen dark:bg-black/70">
