@@ -19,7 +19,7 @@
 		$page.route.id?.startsWith(item.url) && 'border-b-2 border-b-pink-700'
 </script>
 
-<div class="relative group">
+<div class="relative group font-serif">
 	<div class="md:hidden text-3xl -mt-1">⚀</div>
 	<div
 		class="

@@ -25,7 +25,9 @@
 
 		<div class="relative">
 			<Navbar />
-			<slot />
+			<div class="mt-4">
+				<slot />
+			</div>
 		</div>
 	</div>
 </div>
