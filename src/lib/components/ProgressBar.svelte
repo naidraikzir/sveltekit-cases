@@ -23,7 +23,7 @@
 	$: $navigating ? start() : end()
 </script>
 
-<div class="fixed top-0 inset-x-0 h-1">
+<div class="fixed top-0 inset-x-0 h-0.5">
 	<div
 		class="absolute inset-0 bg-pink-600 scale-x-0 transition origin-left"
 		style={`transform: scaleX(${progress})`}
