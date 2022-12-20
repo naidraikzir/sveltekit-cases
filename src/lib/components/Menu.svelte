@@ -16,7 +16,7 @@
 	}))
 
 	$: getActiveClass = (item: MenuItem) =>
-		$page.route.id?.startsWith(item.url) && 'border-b-2 border-b-pink-700'
+		$page.route?.id?.startsWith(item.url) && 'border-b-2 border-b-pink-700'
 </script>
 
 <div class="relative group font-serif">

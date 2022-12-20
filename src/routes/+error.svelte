@@ -7,7 +7,7 @@
 <Meta title={`${$page.status}`} />
 
 <div class="container mx-auto px-4 min-h-[20rem] flex items-center justify-center">
-	<Card>
+	<Card class="w-full max-w-[24rem]">
 		<div class="text-center">
 			<h1 class="text-5xl">{$page.status}</h1>
 			<h2 class="text-2xl">{$page.error?.message}</h2>
