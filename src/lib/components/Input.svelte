@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let type = 'text'
-	export let value: string | number
+	export let value: string | number = ''
 	export let label = ''
 	export let id = ''
 
