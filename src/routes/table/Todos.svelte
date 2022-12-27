@@ -16,7 +16,7 @@
 			</th>
 		</tr>
 		<tr>
-			<th class="p-2" width="42" />
+			<th class="p-2 w-[42px]" />
 			<th class="p-2" align="left">Title</th>
 		</tr>
 	</thead>

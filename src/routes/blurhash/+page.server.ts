@@ -1,4 +1,3 @@
-import { error } from '@sveltejs/kit'
 import { encode } from 'blurhash'
 import sharp from 'sharp'
 import type { Actions } from './$types'
@@ -6,17 +5,12 @@ import type { Actions } from './$types'
 export const prerender = false
 
 export const actions: Actions = {
-	default: async ({ request, fetch }) => {
+	default: async ({ request }) => {
 		const form = await request.formData()
 		const url = <string>form.get('url')
+		const image = <Blob>form.get('image')
 
-		const res = await fetch(url)
-    const type = res.headers.get('content-type')
-		if (!type?.startsWith('image')) {
-			throw error(400, 'Please use image 🖼️ url')
-		}
-
-		const buffer = await res.arrayBuffer()
+		const buffer = await image.arrayBuffer()
 		const imgArr = new Uint8ClampedArray(buffer)
 		const {
 			data,
@@ -25,6 +19,6 @@ export const actions: Actions = {
 		const hash = await encode(new Uint8ClampedArray(data.buffer), width, height, 4, 4)
     const aspect = Math.round(width / height * 100) / 100;
 
-		return { hash, url, aspect }
+		return { url, hash, aspect }
 	}
 }
