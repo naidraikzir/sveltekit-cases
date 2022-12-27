@@ -17,7 +17,7 @@ export const actions: Actions = {
 			info: { width, height }
 		} = await sharp(imgArr).raw().ensureAlpha().toBuffer({ resolveWithObject: true })
 		const hash = await encode(new Uint8ClampedArray(data.buffer), width, height, 4, 4)
-    const aspect = Math.round(width / height * 100) / 100;
+		const aspect = Math.round((width / height) * 100) / 100
 
 		return { url, hash, aspect }
 	}

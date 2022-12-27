@@ -36,7 +36,7 @@
 			error = 'Please use valid image 🖼️ url'
 			isSubmitting = false
 			return
-		} else if (parseInt(res.headers.get('content-length') || '') > 200_000) {
+		} else if (parseInt(res.headers.get('content-length') || '') > 100_000) {
 			error = 'File is too big'
 			isSubmitting = false
 			return
@@ -47,20 +47,25 @@
 		data.append('image', new File([blob], 'image'))
 		data.append('url', url)
 
-		const response = await fetch(action, {
-			method: 'POST',
-			body: data,
-			headers: {
-				'x-sveltekit-action': 'true'
-			}
-		})
+		try {
+			const response = await fetch(action, {
+				method: 'POST',
+				body: data,
+				headers: {
+					'x-sveltekit-action': 'true'
+				}
+			})
 
-		show = false
-		const result: ActionResult = deserialize(await response.text())
-		setTimeout(() => {
-			applyAction(result)
-		}, 500)
-		isSubmitting = false
+			show = false
+			const result: ActionResult = deserialize(await response.text())
+			setTimeout(() => {
+				applyAction(result)
+			}, 500)
+		} catch (error) {
+			console.error(error)
+		} finally {
+			isSubmitting = false
+		}
 	}
 
 	onMount(() => {
