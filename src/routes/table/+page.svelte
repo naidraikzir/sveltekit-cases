@@ -2,10 +2,9 @@
 	import { slide } from 'svelte/transition'
 	import Card from '$lib/components/Card.svelte'
 	import Meta from '$lib/components/Meta.svelte'
-	import type { PageData } from './$types'
 	import Todos from './Todos.svelte'
 
-	export let data: PageData
+	export let data
 	let expanded = new Set()
 
 	$: onAllClick = () => {
@@ -28,7 +27,7 @@
 			<table class="w-full">
 				<thead>
 					<tr>
-						<th class="p-2" width="42">
+						<th class="w-10 p-2">
 							<button on:click={onAllClick}>{expanded.size ? '▽' : '▷'}</button>
 						</th>
 						<th class="p-2" align="left">Name</th>

@@ -4,9 +4,8 @@
 	import Navbar from '$lib/components/Navbar.svelte'
 	import ProgressBar from '$lib/components/ProgressBar.svelte'
 	import routes from '$lib/store/routes'
-	import type { PageData } from './$types'
 
-	export let data: PageData
+	export let data
 	$routes = data.routes
 </script>
 

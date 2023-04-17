@@ -1,10 +1,9 @@
 import { encode } from 'blurhash'
 import sharp from 'sharp'
-import type { Actions } from './$types'
 
 export const prerender = false
 
-export const actions: Actions = {
+export const actions = {
 	default: async ({ request }) => {
 		const form = await request.formData()
 		const url = <string>form.get('url')

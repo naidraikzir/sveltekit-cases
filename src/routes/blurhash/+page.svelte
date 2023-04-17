@@ -7,9 +7,8 @@
 	import Card from '$lib/components/Card.svelte'
 	import Input from '$lib/components/Input.svelte'
 	import Meta from '$lib/components/Meta.svelte'
-	import type { ActionData } from './$types'
 
-	export let form: ActionData
+	export let form
 
 	const resX = 16
 	const resY = 16
