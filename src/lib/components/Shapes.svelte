@@ -9,10 +9,10 @@
 	let yCount = 0
 
 	const shapes = ['star', 'circle', 'cross', 'triangle']
-	type Shape = typeof shapes[number]
+	type Shape = (typeof shapes)[number]
 
 	const colors = ['#BEE86D', '#B3A6E2', '#EAB1B0']
-	type Color = typeof colors[number]
+	type Color = (typeof colors)[number]
 
 	interface Item {
 		shape: Shape
